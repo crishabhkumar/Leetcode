@@ -22,7 +22,6 @@ s[i] is a printable ascii character.
 //solution 1:
 class Solution {
     public void reverseString(char[] s) {
-        StringBuilder str = new StringBuilder();
         for (int i = 0; i < s.length/2; i++) {
             char temp = s[i];
             s[i] = s[s.length - i - 1];
@@ -34,3 +33,20 @@ class Solution {
 
 
 //Solution2:
+class Solution {
+    public void reverseString(char[] s) {
+        int end = s.length - 1;
+        int start = 0;
+        printstr(s,start,end);
+        System.out.println(Arrays.toString(s));
+    }
+    void printstr(char[] s,int start,int end) {
+        if(start >= s.length/2){
+            return;
+        }
+        char temp = s[start];
+        s[start] = s[end];
+        s[end] = temp;
+        printstr(s,start+1,end-1);
+    }
+}
