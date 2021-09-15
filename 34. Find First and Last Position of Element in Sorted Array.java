@@ -69,3 +69,64 @@ class Solution {
         return ans;
     }
 }
+
+
+//Another Solution:
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        int[] arr = new int[2];
+        arr[0] = startIndex(nums,target);
+        arr[1] = endIndex(nums,target);
+        return arr;
+    }
+    
+    
+    public int startIndex(int[] nums,int target){
+        int start = 0;
+        int ans = 0;
+        boolean find = false;
+        int end = nums.length - 1;
+        while(start <= end){
+            int mid = start + (end -start)/2;
+            if(nums[mid] > target){
+                end = mid-1;
+            }else if(nums[mid] < target){
+                start = mid+1;
+            }else{
+                ans = mid;
+                find = true;
+                end = mid-1;
+            }
+        }
+        if(find){
+            return ans;   
+        }else{
+            return -1;
+        }
+        
+    }
+  
+    public int endIndex(int[] nums,int target){
+        int start = 0;
+        int ans = 0;
+        boolean find = false;
+        int end = nums.length - 1;
+        while(start <= end){
+            int mid = start + (end -start)/2;
+            if(nums[mid] > target){
+                end = mid - 1;
+            }else if(nums[mid] < target){
+                start = mid + 1;
+            }else{
+                ans = mid;
+                find = true;
+                start = mid + 1;
+            }
+        }
+        if(find){
+            return ans;   
+        }else{
+            return -1;
+        }
+    }
+}
