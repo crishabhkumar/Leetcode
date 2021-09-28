@@ -36,6 +36,25 @@ All the numbers of nums are unique.
 */
 
 //Solution:
+
+//Optimized one:
+class Solution {
+    public int missingNumber(int[] nums) {
+        int arraySum = 0;
+        int nSum = (nums.length * (nums.length + 1))/2;
+        for(int i = 0;i < nums.length;i++){
+            arraySum = arraySum + nums[i];
+        }
+        return nSum - arraySum;
+    }
+}
+
+
+
+//another solution:
+
+
+
 class Solution {
     public int missingNumber(int[] nums) {
         if(nums.length == 1 && nums[0] == 0){
