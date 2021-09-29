@@ -37,6 +37,41 @@ All the numbers of nums are unique.
 
 //Solution:
 
+
+//Using Cyclic Sort:
+class Solution {
+    public int missingNumber(int[] nums) {
+        cyclicSort(nums);
+        int ele = nums.length;
+        for(int i = 0;i<nums.length;i++){
+            if(nums[i] != i){
+                ele = i;
+            }
+        }
+        return ele;
+    }
+    
+    public void cyclicSort(int[] arr){
+        int i = 0;
+        while(i < arr.length){
+            if(arr[i] == arr.length){
+                i++;
+            }else if(arr[i] != i){
+                swapArray(arr,i,arr[i]);
+            }else{
+                i++;
+            }
+        }
+    }
+    
+    public void swapArray(int[] arr,int first,int second){
+        int temp = arr[first];
+        arr[first] = arr[second];
+        arr[second] = temp;
+    }
+    
+}
+
 //Optimized one:
 class Solution {
     public int missingNumber(int[] nums) {
