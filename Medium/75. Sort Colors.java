@@ -60,3 +60,33 @@ class Solution {
 
     }
 }
+
+
+//Another solution using bubble sort
+class Solution {
+    public void sortColors(int[] nums) {
+        BubbleSort(nums);
+    }
+    public void BubbleSort(int[] arr){
+        boolean swapped;
+        //run the loop for n-1 times
+        for (int i = 0; i < arr.length; i++) {
+            //run internal loop
+            //for less than n-i
+            swapped = false;
+            for (int j = 1; j < arr.length - i; j++) {
+                //swap if condition satisfy
+                if(arr[j] < arr[j-1]){
+                    int temp = arr[j];
+                    arr[j] = arr[j-1];
+                    arr[j-1] = temp;
+                    swapped = true;
+                }
+            }
+            //if swapped did not work that means array is soted then just break it.
+            if(swapped == false){
+                break;
+            }
+        }
+    }
+}
