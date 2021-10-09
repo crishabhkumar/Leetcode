@@ -60,3 +60,18 @@ class Solution {
         
     }
 }
+
+//Another solution:
+class Solution {
+    public int[] shuffle(int[] nums, int n) {
+        int[] ans = new int[2*n];
+        int g=0;
+        for(int i=0;i<2*n;i++){
+            if(i%2==0){
+             ans[i] = nums[g++];}
+            else{
+             ans[i]=nums[g+n-1];}
+        }
+        return ans;
+    }
+}
