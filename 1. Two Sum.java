@@ -40,3 +40,45 @@ class Solution {
         return arr;
     }
 }
+
+
+
+//another solution
+class Solution {
+    public int[] twoSum(int[] arr, int target) {
+        int[] ans = new int[2];
+        int ans1 = 0,ans2 = 0,left = 0;
+        int right = arr.length-1;
+        int[] originalArr = Arrays.copyOf(arr,arr.length);
+        Arrays.sort(arr);
+        while (left <= right){
+            if(arr[left] + arr[right] < target){
+                left++;
+            }else if(arr[left] + arr[right] > target){
+                right--;
+            }else {
+                ans1 = arr[left];
+                ans2 = arr[right];
+                break;
+            }
+        }
+        
+        
+        for(int i = 0 ;i < arr.length;i++){
+            if(ans1 == originalArr[i]){
+                ans[0] = i;
+                break;
+            }
+        }
+        
+        
+        for(int i = arr.length-1 ;i >= 0;i--){
+            if(ans2 == originalArr[i]){
+                ans[1] = i;
+                break;
+            }
+        }
+        
+        return ans;
+    }
+}
